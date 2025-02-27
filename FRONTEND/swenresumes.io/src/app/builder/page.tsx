@@ -55,7 +55,7 @@ export default function ResumeBuilder() {
   const [projects, setProjects] = useState<Project[]>([
     { name: "", description: "", technologies: "", link: "" },
   ]);
-  const [skills, setSkills] = useState<String[]>([""]);
+  const [skills, setSkills] = useState<string[]>([""]);
   const [certifications, setCertifications] = useState<Certification[]>([
     { name: "", issuer: "", date: "" },
   ]);

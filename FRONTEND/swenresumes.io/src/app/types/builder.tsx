@@ -1,7 +1,21 @@
+import {
+  Code,
+  Briefcase,
+  GraduationCap,
+  FileText,
+  Cpu,
+  Award,
+} from "lucide-react";
 export interface Section {
   id: string;
   label: string;
-  icon: React.ComponentType<any>;
+  icon:
+    | typeof Code
+    | typeof Briefcase
+    | typeof GraduationCap
+    | typeof FileText
+    | typeof Cpu
+    | typeof Award;
 }
 
 export interface Experience {
