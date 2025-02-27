@@ -241,8 +241,8 @@ export default function LandingPage() {
                     />
                     <div>
                       <p className="text-sm leading-loose">
-                        "After switching to SWEResumes.io, I received callbacks from 80% of the companies I applied to,
-                        including FAANG. The LaTeX formatting made my resume stand out while remaining ATS-friendly."
+                        &ldquo;After switching to SWEResumes.io, I received callbacks from 80% of the companies I applied to,
+                        including FAANG. The LaTeX formatting made my resume stand out while remaining ATS-friendly.&rdquo;
                       </p>
                       <div className="mt-4">
                         <p className="font-semibold">Sarah Chen</p>
@@ -264,9 +264,9 @@ export default function LandingPage() {
                     />
                     <div>
                       <p className="text-sm leading-loose">
-                        "As a bootcamp graduate, I needed a resume that would help me compete with CS degree holders.
+                        &ldquo;As a bootcamp graduate, I needed a resume that would help me compete with CS degree holders.
                         This platform helped me create a professional resume that highlighted my projects and skills
-                        perfectly."
+                        perfectly.&rdquo;
                       </p>
                       <div className="mt-4">
                         <p className="font-semibold">Michael Johnson</p>
@@ -288,8 +288,8 @@ export default function LandingPage() {
                     />
                     <div>
                       <p className="text-sm leading-loose">
-                        "The GitHub integration is a game-changer. It automatically pulled in my projects and
-                        contributions, saving me hours of manual work while making my resume more impressive."
+                        &ldquo;The GitHub integration is a game-changer. It automatically pulled in my projects and
+                        contributions, saving me hours of manual work while making my resume more impressive.&rdquo;
                       </p>
                       <div className="mt-4">
                         <p className="font-semibold">Priya Patel</p>
@@ -311,9 +311,9 @@ export default function LandingPage() {
                     />
                     <div>
                       <p className="text-sm leading-loose">
-                        "I've tried many resume builders, but this is the only one that truly understands what tech
+                        &ldquo;I&rsquo;ve tried many resume builders, but this is the only one that truly understands what tech
                         recruiters are looking for. The LaTeX templates are clean, professional, and perfectly
-                        formatted."
+                        formatted.&rdquo;
                       </p>
                       <div className="mt-4">
                         <p className="font-semibold">David Kim</p>
