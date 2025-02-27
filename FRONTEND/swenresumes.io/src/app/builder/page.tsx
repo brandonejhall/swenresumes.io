@@ -141,18 +141,25 @@ export default function ResumeBuilder() {
   ) => {
     switch (section) {
       case "experience":
-        const newExperiences:Experience[] = [...experiences];
-        newExperiences[index][field] = value;
+        const newExperiences: Experience[] = [...experiences];
+        if (field === "achievements") {
+          newExperiences[index].achievements = value.split(","); // Convert string to array
+        } else {
+          newExperiences[index] = {
+            ...newExperiences[index],
+            [field]: value,
+          };
+        }
         setExperiences(newExperiences);
         break;
       case "education":
         const newEducations = [...educations];
-        newEducations[index][field] = value;
+        newEducations[index][field as keyof Education] = value;
         setEducations(newEducations);
         break;
       case "projects":
         const newProjects = [...projects];
-        newProjects[index][field] = value;
+        newProjects[index][field as keyof Project] = value;
         setProjects(newProjects);
         break;
       case "skills":
@@ -162,7 +169,7 @@ export default function ResumeBuilder() {
         break;
       case "certifications":
         const newCertifications = [...certifications];
-        newCertifications[index][field] = value;
+        newCertifications[index][field as keyof Certification] = value;
         setCertifications(newCertifications);
         break;
     }
