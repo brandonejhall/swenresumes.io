@@ -20,7 +20,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 
-const sections = [
+const sections :  = [
   { id: "profile", label: "Profile", icon: Code },
   { id: "experience", label: "Experience", icon: Briefcase },
   { id: "education", label: "Education", icon: GraduationCap },
