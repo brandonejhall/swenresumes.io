@@ -1,0 +1,22 @@
+{
+  "name": "swenresumes.io-engine",
+  "version": "1.0.0",
+  "description": "backend for swenresumes.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandonejhall/swenresumes.io.git"
+  },
+  "author": "BrandonHall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brandonejhall/swenresumes.io/issues"
+  },
+  "homepage": "https://github.com/brandonejhall/swenresumes.io#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
