@@ -1,10 +1,12 @@
 {
   "name": "swenresumes.io-engine",
   "version": "1.0.0",
+  "type": "module",
   "description": "backend for swenresumes.io",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,9 @@
   },
   "homepage": "https://github.com/brandonejhall/swenresumes.io#readme",
   "dependencies": {
-    "express": "^4.21.2"
+    "@supabase/supabase-js": "^2.49.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg-promise": "^11.10.2"
   }
 }
