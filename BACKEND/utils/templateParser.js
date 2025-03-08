@@ -1,13 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-
 const headerParser = (data) => {
-    /** @param {Object.<string, string>} data - Dictionary of placeholder values */
-    
     const headerPlaceholders = [
         'FULL_NAME',
-        'TITLE',
         'EMAIL',
         'PHONE',
         'LOCATION',
@@ -16,25 +12,9 @@ const headerParser = (data) => {
     ];
 
     const filePath = path.join('BACKEND/utils/templates', 'minimal.tex');
-    let fileContent = fs.readFileSync(filePath, 'utf8'); // Read synchronously
+    let fileContent = fs.readFileSync(filePath, 'utf8');
 
     headerPlaceholders.forEach(placeholder => {
-        const value = data[placeholder] || ''; // Use empty string if value not provided
-        fileContent = fileContent.replaceAll(`{${placeholder}}`, value);
-    });
-
-    fs.writeFileSync('temp.tex', fileContent);
-};
-
-
-const profileParser = (data) => {
-    const profilePlaceholders = [
-        'PROFILE_TEXT'
-    ];
-
-    let fileContent = fs.readFileSync('temp.tex', 'utf8');
-
-    profilePlaceholders.forEach(placeholder => {
         const value = data[placeholder] || '';
         fileContent = fileContent.replaceAll(`{${placeholder}}`, value);
     });
@@ -42,7 +22,7 @@ const profileParser = (data) => {
     return fileContent;
 };
 
-const experienceParser = (experiences) => {
+const experienceParser = (experiences, fileContent) => {
     const experiencePlaceholders = [
         'COMPANY_NAME',
         'LOCATION',
@@ -50,21 +30,16 @@ const experienceParser = (experiences) => {
         'DATE_RANGE',
         'BULLET_POINT'
     ];
-
-    let fileContent = fs.readFileSync('temp.tex', 'utf8');
     
-    // Find the experience section content between markers
     const expStartMarker = '% EXPERIENCE_START';
     const expEndMarker = '% EXPERIENCE_END';
     const entryStartMarker = '% ENTRY_START';
     const entryEndMarker = '% ENTRY_END';
     
-    // Extract the template for a single entry
     const startIdx = fileContent.indexOf(entryStartMarker);
     const endIdx = fileContent.indexOf(entryEndMarker) + entryEndMarker.length;
     const entryTemplate = fileContent.substring(startIdx, endIdx);
     
-    // Generate content for each experience
     let allEntries = '';
     experiences.forEach(exp => {
         let entry = entryTemplate;
@@ -75,20 +50,17 @@ const experienceParser = (experiences) => {
         allEntries += entry + '\n';
     });
     
-    // Replace the original template entries with all new entries
     const sectionStart = fileContent.indexOf(expStartMarker);
     const sectionEnd = fileContent.indexOf(expEndMarker) + expEndMarker.length;
-    const newContent = 
-        fileContent.substring(0, sectionStart) +
-        expStartMarker +
-        allEntries +
-        expEndMarker +
-        fileContent.substring(sectionEnd);
     
-    fs.writeFileSync('temp.tex', newContent);
+    return fileContent.substring(0, sectionStart) +
+           expStartMarker +
+           allEntries +
+           expEndMarker +
+           fileContent.substring(sectionEnd);
 };
 
-const educationParser = (education) => {
+const educationParser = (education, fileContent) => {
     const educationPlaceholders = [
         'UNIVERSITY_NAME',
         'LOCATION',
@@ -96,8 +68,6 @@ const educationParser = (education) => {
         'GRADUATION_DATE',
         'GPA'
     ];
-
-    let fileContent = fs.readFileSync('temp.tex', 'utf8');
     
     const eduStartMarker = '% EDUCATION_START';
     const eduEndMarker = '% EDUCATION_END';
@@ -120,35 +90,15 @@ const educationParser = (education) => {
     
     const sectionStart = fileContent.indexOf(eduStartMarker);
     const sectionEnd = fileContent.indexOf(eduEndMarker) + eduEndMarker.length;
-    const newContent = 
-        fileContent.substring(0, sectionStart) +
-        eduStartMarker +
-        allEntries +
-        eduEndMarker +
-        fileContent.substring(sectionEnd);
     
-    fs.writeFileSync('temp.tex', newContent);
+    return fileContent.substring(0, sectionStart) +
+           eduStartMarker +
+           allEntries +
+           eduEndMarker +
+           fileContent.substring(sectionEnd);
 };
 
-const skillsParser = (data) => {
-    const skillsPlaceholders = [
-        'SKILLS_PROGRAMMING',
-        'SKILLS_FRAMEWORKS',
-        'SKILLS_TOOLS',
-        'SKILLS_CERTIFICATIONS'
-    ];
-
-    let fileContent = fs.readFileSync('temp.tex', 'utf8');
-
-    skillsPlaceholders.forEach(placeholder => {
-        const value = data[placeholder] || '';
-        fileContent = fileContent.replaceAll(`{${placeholder}}`, value);
-    });
-
-    return fileContent;
-};
-
-const projectsParser = (projects) => {
+const projectsParser = (projects, fileContent) => {
     const projectPlaceholders = [
         'PROJECT_NAME',
         'PROJECT_LINK',
@@ -156,8 +106,6 @@ const projectsParser = (projects) => {
         'DATE_RANGE',
         'BULLET_POINT'
     ];
-
-    let fileContent = fs.readFileSync('temp.tex', 'utf8');
     
     const projStartMarker = '% PROJECTS_START';
     const projEndMarker = '% PROJECTS_END';
@@ -180,21 +128,34 @@ const projectsParser = (projects) => {
     
     const sectionStart = fileContent.indexOf(projStartMarker);
     const sectionEnd = fileContent.indexOf(projEndMarker) + projEndMarker.length;
-    const newContent = 
-        fileContent.substring(0, sectionStart) +
-        projStartMarker +
-        allEntries +
-        projEndMarker +
-        fileContent.substring(sectionEnd);
     
-    fs.writeFileSync('temp.tex', newContent);
+    return fileContent.substring(0, sectionStart) +
+           projStartMarker +
+           allEntries +
+           projEndMarker +
+           fileContent.substring(sectionEnd);
+};
+
+const generateLatex = (data) => {
+    // Start with header section
+    let latexContent = headerParser(data.header);
+    
+    // Process each section in sequence
+    if (data.experience) {
+        latexContent = experienceParser(data.experience, latexContent);
+    }
+    
+    if (data.education) {
+        latexContent = educationParser(data.education, latexContent);
+    }
+    
+    if (data.projects) {
+        latexContent = projectsParser(data.projects, latexContent);
+    }
+    
+    return latexContent;
 };
 
 module.exports = {
-    headerParser,
-    profileParser,
-    experienceParser,
-    educationParser,
-    skillsParser,
-    projectsParser
+    generateLatex
 };
