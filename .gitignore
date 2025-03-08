@@ -28,3 +28,6 @@ dist/
 .out/
 .next/
 .vercel/
+
+# MAC Files
+.DS_Store
