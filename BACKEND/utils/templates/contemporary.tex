@@ -1,0 +1,225 @@
+%-------------------------
+% SwenResumes - Template 5: Contemporary Visual
+% Contemporary layout with subtle visual hierarchy
+% Optimized for ATS with balanced design
+% SINGLE PAGE LAYOUT
+%-------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[empty]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{tikz}
+
+% Define colors
+\definecolor{steelblue}{RGB}{70,130,180}
+\definecolor{lightsteelblue}{RGB}{176,196,222}
+\definecolor{darkgray}{RGB}{80,80,80}
+
+% Set page margins - tighter for single page
+\geometry{
+  top=0.4in,
+  bottom=0.4in,
+  left=0.5in,
+  right=0.5in,
+  heightrounded
+}
+
+% Custom section formatting - reduced spacing
+\titleformat{\section}{
+  \vspace{-6pt}\large\bfseries\color{steelblue}
+}{}{0em}{}[\vspace{0.2cm}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{#1}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{1pt}
+  \item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{#3} & \textit{#4} \\
+    \end{tabular*}\vspace{1pt}
+}
+
+\newcommand{\skillCategory}[2]{
+  \textbf{#1:} #2\\[2pt]
+}
+
+% No indentation
+\setlength{\tabcolsep}{0pt}
+
+% No page numbers
+\pagestyle{empty}
+
+% Ensure single page
+\raggedbottom
+\setlength{\parindent}{0pt}
+
+% Reduce item spacing
+\setlist[itemize]{topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=1pt}
+
+\begin{document}
+
+%-------------------------
+% HEADER - Compact header with smaller banner
+%-------------------------
+\begin{tikzpicture}[remember picture, overlay]
+\fill[steelblue] (current page.north west) rectangle ([yshift=-1.2in]current page.north east);
+\end{tikzpicture}
+
+\begin{center}
+\vspace{-0.8in}
+{\Large\color{white}\textbf{{FULL\_NAME}}}\\
+\vspace{0.05in}
+{\small\color{white}\textit{{TITLE}}}\\
+\vspace{0.1in}
+\color{white}\small
+\faIcon{envelope} \href{mailto:{EMAIL}}{{EMAIL}} $|$ 
+\faIcon{phone} {PHONE} $|$ 
+\faIcon{map-marker-alt} {LOCATION} $|$ 
+\faIcon{linkedin} \href{https://linkedin.com/in/{LINKEDIN}}{{LINKEDIN}} $|$ 
+\faIcon{github} \href{https://github.com/{GITHUB}}{{GITHUB}}
+\end{center}
+
+\vspace{0.2in}
+
+%-------------------------
+% PROFILE
+%-------------------------
+% PROFILE_START
+\section{Profile}
+{\small {PROFILE\_TEXT}}
+% PROFILE_END
+
+%-------------------------
+% EXPERIENCE
+%-------------------------
+% EXPERIENCE_START
+\section{Experience}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    % ENTRY_START
+    \resumeSubheading
+      {COMPANY\_NAME}{LOCATION}
+      {POSITION}{DATE\_RANGE}
+      % BULLETS_START
+      \begin{itemize}[leftmargin=0.15in, label=\textbullet]
+        \resumeItem{BULLET\_POINT}
+        \resumeItem{BULLET\_POINT}
+        \resumeItem{BULLET\_POINT}
+      \end{itemize}
+      % BULLETS_END
+    % ENTRY_END
+    
+    % ENTRY_START
+    \resumeSubheading
+      {COMPANY\_NAME}{LOCATION}
+      {POSITION}{DATE\_RANGE}
+      % BULLETS_START
+      \begin{itemize}[leftmargin=0.15in, label=\textbullet]
+        \resumeItem{BULLET\_POINT}
+        \resumeItem{BULLET\_POINT}
+      \end{itemize}
+      % BULLETS_END
+    % ENTRY_END
+\end{itemize}
+% EXPERIENCE_END
+
+%-------------------------
+% EDUCATION
+%-------------------------
+% EDUCATION_START
+\section{Education}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    % ENTRY_START
+    \resumeSubheading
+      {UNIVERSITY\_NAME}{LOCATION}
+      {DEGREE}{GRADUATION\_DATE}
+      % BULLETS_START
+      \begin{itemize}[leftmargin=0.15in, label=\textbullet]
+        \resumeItem{GPA: {GPA}}
+        \resumeItem{BULLET\_POINT}
+      \end{itemize}
+      % BULLETS_END
+    % ENTRY_END
+\end{itemize}
+% EDUCATION_END
+
+%-------------------------
+% PROJECTS
+%-------------------------
+% PROJECTS_START
+\section{Projects}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    % ENTRY_START
+    \resumeSubheading
+      {PROJECT\_NAME}{\href{PROJECT\_LINK}{Link}}
+      {TECHNOLOGIES\_USED}{DATE\_RANGE}
+      % BULLETS_START
+      \begin{itemize}[leftmargin=0.15in, label=\textbullet]
+        \resumeItem{BULLET\_POINT}
+        \resumeItem{BULLET\_POINT}
+      \end{itemize}
+      % BULLETS_END
+    % ENTRY_END
+    
+    % ENTRY_START
+    \resumeSubheading
+      {PROJECT\_NAME}{\href{PROJECT\_LINK}{Link}}
+      {TECHNOLOGIES\_USED}{DATE\_RANGE}
+      % BULLETS_START
+      \begin{itemize}[leftmargin=0.15in, label=\textbullet]
+        \resumeItem{BULLET\_POINT}
+      \end{itemize}
+      % BULLETS_END
+    % ENTRY_END
+\end{itemize}
+% PROJECTS_END
+
+%-------------------------
+% SKILLS
+%-------------------------
+% SKILLS_START
+\section{Skills \& Certifications}
+% SKILL_CATEGORY_START
+\skillCategory{Programming Languages}{SKILLS\_PROGRAMMING}
+% SKILL_CATEGORY_END
+% SKILL_CATEGORY_START
+\skillCategory{Frameworks \& Libraries}{SKILLS\_FRAMEWORKS}
+% SKILL_CATEGORY_END
+% SKILL_CATEGORY_START
+\skillCategory{Tools \& Technologies}{SKILLS\_TOOLS}
+% SKILL_CATEGORY_END
+% SKILL_CATEGORY_START
+\skillCategory{Certifications}{SKILLS\_CERTIFICATIONS}
+% SKILL_CATEGORY_END
+% SKILLS_END
+
+%-------------------------
+% AWARDS
+%-------------------------
+% AWARDS_START
+\section{Awards}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    % ENTRY_START
+    \resumeSubheading
+      {AWARD\_NAME}{DATE}
+      {ORGANIZATION}{LOCATION}
+      % BULLETS_START
+      \begin{itemize}[leftmargin=0.15in, label=\textbullet]
+        \resumeItem{BULLET\_POINT}
+      \end{itemize}
+      % BULLETS_END
+    % ENTRY_END
+\end{itemize}
+% AWARDS_END
+
+\end{document}

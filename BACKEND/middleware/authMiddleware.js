@@ -1,4 +1,5 @@
 import supabase from "../config/db.js";
+
 const checkForPreviousAnon = async (req, res, next) => {
   try {
     // Check for existing session
@@ -41,7 +42,7 @@ const setAuthCookies = (res, session) => {
   res.cookie("access_token", session.access_token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "Strict",
+    sameSite: "Strict", 
     maxAge: 3600 * 1000 // 1 hour
   });
   

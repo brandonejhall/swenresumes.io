@@ -6,7 +6,6 @@ import checkForPreviousAnon from './middleware/authMiddleware.js'
 
 dotenv.config()
 
-
 const app = express()
 
 app.use(cookieParser())
